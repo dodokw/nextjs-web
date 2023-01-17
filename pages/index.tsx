@@ -2,10 +2,27 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+
+  const onChangeId = useMemo(() => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      setId(e.target.value);
+    };
+  }, [id]);
+
+  const onChangePw = useMemo(() => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      setPw(e.target.value);
+      console.log("pw: ", pw);
+    };
+  }, [pw]);
+
   return (
     <>
       <Head>
@@ -14,11 +31,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="grid items-center justify-center w-r1/2 h-128 bg-red-100">
-        <div className="text-3xl font-bold text-red-200 underline bg-black">
-          Hello World
+      <main className="flex flex-col items-center justify-center w-screen h-screen bg-gray-50">
+        <div className="h-10 w-80 grid justify-center text-3xl font-bold text-red-200 underline bg-wb mb-10">
+          ! Hello World !
         </div>
-        <div className="w-80 h-80 bg-blue-200" />
+        <input
+          type={"text"}
+          className="grid justify-center w-r1/3 min-w-128 h-16 bg-blue-200 rounded-3xl mb-10 px-10 dark:focus:bg-blue-300"
+          id="id"
+          onChange={(e) => onChangeId(e)}
+        />
+        <input
+          type={"password"}
+          className="grid justify-center w-r1/3 min-w-128 h-16 bg-blue-200 rounded-3xl mb-10 px-10 dark:focus:bg-blue-300"
+          id="pw"
+          onChange={(e) => onChangePw(e)}
+        />
       </main>
     </>
   );

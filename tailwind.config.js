@@ -16,6 +16,9 @@ module.exports = {
         50: "#eff6ff",
         100: "#dbeafe",
         200: "#bfdbfe",
+        300: "#93c5fd",
+        400: "#60a5fa",
+        500: "#3b82f6",
       },
       gray: {
         50: "#f9fafb",
@@ -26,11 +29,21 @@ module.exports = {
     },
     extend: {
       width: {
+        64: "16rem",
         128: "32rem",
         256: "64rem",
         "r1/2": "50vw",
+        "r1/3": "calc(100vw / 3)",
       },
       height: {
+        16: "4rem",
+        32: "8rem",
+        64: "16rem",
+        128: "32rem",
+        256: "64rem",
+      },
+      minWidth: {
+        64: "16rem",
         128: "32rem",
         256: "64rem",
       },
