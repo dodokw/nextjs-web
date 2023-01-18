@@ -47,6 +47,14 @@ export default function Home() {
           id="pw"
           onChange={(e) => onChangePw(e)}
         />
+        <div className="grid">
+          <button
+            className="flex justify-center items-center w-300px h-60px bg-blue-200 text-2xl"
+            onClick={() => console.log("click")}
+          >
+            로그인
+          </button>
+        </div>
       </main>
     </>
   );

@@ -29,11 +29,20 @@ module.exports = {
     },
     extend: {
       width: {
+        16: "4rem",
         64: "16rem",
         128: "32rem",
         256: "64rem",
         "r1/2": "50vw",
         "r1/3": "calc(100vw / 3)",
+        "20px": "20px",
+        "40px": "40px",
+        "80px": "80px",
+        "100px": "100px",
+        "200px": "200px",
+        "300px": "300px",
+        "400px": "400px",
+        "13px": "13px",
       },
       height: {
         16: "4rem",
@@ -41,6 +50,10 @@ module.exports = {
         64: "16rem",
         128: "32rem",
         256: "64rem",
+        "20px": "20px",
+        "40px": "40px",
+        "60px": "60px",
+        "80px": "80px",
       },
       minWidth: {
         64: "16rem",
