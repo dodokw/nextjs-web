@@ -3,12 +3,14 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [err, setErr] = useState("");
 
   const onChangeId = useMemo(() => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +24,23 @@ export default function Home() {
       console.log("pw: ", pw);
     };
   }, [pw]);
+
+  const onLogin = async () => {
+    console.log("login");
+    const body = {
+      username: id,
+      password: pw,
+    };
+    try {
+      const res = await axios.post("/auth/login", body, {
+        withCredentials: true,
+      });
+      console.log(res);
+    } catch (error: any) {
+      console.warn(error);
+      setErr(error);
+    }
+  };
 
   return (
     <>
@@ -50,10 +69,11 @@ export default function Home() {
         <div className="grid">
           <button
             className="flex justify-center items-center w-300px h-60px bg-blue-200 text-2xl"
-            onClick={() => console.log("click")}
+            onClick={onLogin}
           >
             로그인
           </button>
+          <div className="flex mt-10 2-"></div>
         </div>
       </main>
     </>
