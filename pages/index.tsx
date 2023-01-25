@@ -4,6 +4,8 @@ import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { useAuthDispatch } from "@/context/auth";
+import Router from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +13,8 @@ export default function Home() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [err, setErr] = useState("");
+
+  const dispatch = useAuthDispatch();
 
   const onChangeId = useMemo(() => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,12 +39,17 @@ export default function Home() {
       const res = await axios.post("/auth/login", body, {
         withCredentials: true,
       });
-      console.log(res);
+      // console.log("res.data?.user", res.data);
+      dispatch({ type: "LOGIN", payload: res.data });
+      Router.push("/subs/create");
     } catch (error: any) {
       console.warn(error);
       setErr(error);
     }
   };
+
+  //dispatch info
+  // console.log("user", );
 
   return (
     <>
