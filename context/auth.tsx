@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     defaultDispatch(action);
   };
 
-  console.log("state", state);
+  // console.log("state", state);
 
   return (
     <DispatchContext.Provider value={dispatch}>
